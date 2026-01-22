@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEXORA</title>
+  </head>
+  <header>
+    <div class="logo">
+      <h1>NEXORA</h1>
+    </div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="Product.html">PRODUCT</a></li>
+        <li><a href="Contact.html">CONTACT</a></li>
+        <li><a href="About.html">ABOUT</a></li>
+      </ul>
+    </nav>
+    <button class="signup-btn">signup</button>
+  </header>
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(./images/about-page-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center ;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    color: #ffffff;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px;
+    background: rgba(0, 0, 0, 0.85);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1);
+}
+
+.logo h1 {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    background: linear-gradient(90deg, #00ffff, #0080ff, #ff0000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+    }
+
+    to {
+        filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8));
+    }
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 45px;
+}
+
+.navbar a {
+    color: #00ffff;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00ffff, #ff00ff);
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+.navbar a:hover {
+    color: #ff00ff;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+}
+
+.signup-btn {
+    background: linear-gradient(135deg, #00ffff, #ff0800);
+    color: #000;
+    border: 2px solid #00ffff;
+    padding: 12px 35px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: 800;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.signup-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.signup-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.signup-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(0, 255, 255, 0.6);
+    border-color: #ff00ff;
+}
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, #6a5cff 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-shadow: 
+                0 0 20px #6a5cff,
+                0 0 40px #ff3cac;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #6a5cff, 0 0 40px #ff3cac; }
+            to { text-shadow: 0 0 30px #6a5cff, 0 0 60px #ff3cac; }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #0fda89;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Content */
+        .about-container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+
+        .about-section {
+            margin-bottom: 80px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.753);
+            border: 1px solid rgba(106, 92, 255, 0.3);
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .about-section:hover {
+            border-color: #ff3cac;
+            box-shadow: 
+                0 0 30px rgba(106, 92, 255, 0.3),
+                0 0 60px rgba(255, 60, 172, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: #ff3cac;
+            text-shadow: 0 0 14px #ff3cac;
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #34daa2;
+            margin-bottom: 20px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.945), rgba(239, 60, 255, 0.384));
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 60, 172, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px rgba(106, 92, 255, 0.4);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #6a5cff;
+            text-shadow: 0 0 20px #6a5cff;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #0fda89;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Mission Statement */
+        .mission {
+            background: linear-gradient(135deg, #6a5cff, #ff3cac);
+            padding: 60px 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 20, 0.7);
+            z-index: 1;
+        }
+
+        .mission-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .mission h2 {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            text-shadow: 0 0 20px #fff;
+        }
+
+        .mission p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Neon divider */
+        .divider {
+            height: 2px;
+            margin: 60px 0;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #6a5cff,
+                #ff3cac,
+                #6a5cff,
+                transparent
+            );
+            box-shadow: 0 0 20px #6a5cff, 0 0 40px #ff3cac;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ABOUT US</h1>
+            <p>Where Speed Meets Innovation</p>
+        </div>
+    </section>
+
+    <div class="about-container">
+        <div class="about-section">
+            <h2>Our Passion</h2>
+            <p>
+                We are dedicated to celebrating the pinnacle of automotive engineering—supercars. From the roar of a 
+                V12 engine to the sleek aerodynamic lines that slice through air, we believe supercars represent the 
+                ultimate fusion of art, science, and pure adrenaline.
+            </p>
+            <p>
+                Our mission is to bring together enthusiasts, collectors, and dreamers who share an unrelenting passion 
+                for these mechanical masterpieces. Whether it's a classic Ferrari, a modern McLaren, or a futuristic 
+                Lamborghini, we showcase the very best the automotive world has to offer.
+            </p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Models Featured</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">250+</div>
+                <div class="stat-label">MPH Average</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Community Members</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Pure Adrenaline</div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="mission">
+            <div class="mission-content">
+                <h2>Our Mission</h2>
+                <p>
+                    To ignite the passion for performance, engineering excellence, and automotive artistry. 
+                    We curate the most exclusive supercar experiences and bring you closer to the machines 
+                    that push the boundaries of what's possible on four wheels.
+                </p>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2>What We Do</h2>
+            <p>
+                We provide in-depth reviews, stunning photography, exclusive event coverage, and insider access to the 
+                world's most exotic automobiles. From track days to private unveilings, we're there capturing every moment.
+            </p>
+            <p>
+                Our team of automotive journalists and photographers travel the globe to bring you the latest releases, 
+                comparison tests, and behind-the-scenes stories that make the supercar world so captivating.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>Join The Journey</h2>
+            <p>
+                Whether you're a seasoned collector or just beginning to explore the world of high-performance vehicles, 
+                we invite you to join our community. Experience the thrill, the innovation, and the legacy of the world's 
+                greatest supercars.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+=======
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEXORA</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <header>
+    <div class="logo">
+      <h1>NEXORA</h1>
+    </div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="Product.html">PRODUCT</a></li>
+        <li><a href="Contact.html">CONTACT</a></li>
+        <li><a href="About.html">ABOUT</a></li>
+      </ul>
+    </nav>
+    <button class="signup-btn">signup</button>
+  </header>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url(./images/about-page-bg.jpg);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, #6a5cff 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-shadow: 
+                0 0 20px #6a5cff,
+                0 0 40px #ff3cac;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #6a5cff, 0 0 40px #ff3cac; }
+            to { text-shadow: 0 0 30px #6a5cff, 0 0 60px #ff3cac; }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #0fda89;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Content */
+        .about-container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+
+        .about-section {
+            margin-bottom: 80px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.753);
+            border: 1px solid rgba(106, 92, 255, 0.3);
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .about-section:hover {
+            border-color: #ff3cac;
+            box-shadow: 
+                0 0 30px rgba(106, 92, 255, 0.3),
+                0 0 60px rgba(255, 60, 172, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: #ff3cac;
+            text-shadow: 0 0 14px #ff3cac;
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #34daa2;
+            margin-bottom: 20px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.945), rgba(239, 60, 255, 0.384));
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 60, 172, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px rgba(106, 92, 255, 0.4);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #6a5cff;
+            text-shadow: 0 0 20px #6a5cff;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #0fda89;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Mission Statement */
+        .mission {
+            background: linear-gradient(135deg, #6a5cff, #ff3cac);
+            padding: 60px 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 20, 0.7);
+            z-index: 1;
+        }
+
+        .mission-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .mission h2 {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            text-shadow: 0 0 20px #fff;
+        }
+
+        .mission p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Neon divider */
+        .divider {
+            height: 2px;
+            margin: 60px 0;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #6a5cff,
+                #ff3cac,
+                #6a5cff,
+                transparent
+            );
+            box-shadow: 0 0 20px #6a5cff, 0 0 40px #ff3cac;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ABOUT US</h1>
+            <p>Where Speed Meets Innovation</p>
+        </div>
+    </section>
+
+    <div class="about-container">
+        <div class="about-section">
+            <h2>Our Passion</h2>
+            <p>
+                We are dedicated to celebrating the pinnacle of automotive engineering—supercars. From the roar of a 
+                V12 engine to the sleek aerodynamic lines that slice through air, we believe supercars represent the 
+                ultimate fusion of art, science, and pure adrenaline.
+            </p>
+            <p>
+                Our mission is to bring together enthusiasts, collectors, and dreamers who share an unrelenting passion 
+                for these mechanical masterpieces. Whether it's a classic Ferrari, a modern McLaren, or a futuristic 
+                Lamborghini, we showcase the very best the automotive world has to offer.
+            </p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Models Featured</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">250+</div>
+                <div class="stat-label">MPH Average</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Community Members</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Pure Adrenaline</div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="mission">
+            <div class="mission-content">
+                <h2>Our Mission</h2>
+                <p>
+                    To ignite the passion for performance, engineering excellence, and automotive artistry. 
+                    We curate the most exclusive supercar experiences and bring you closer to the machines 
+                    that push the boundaries of what's possible on four wheels.
+                </p>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2>What We Do</h2>
+            <p>
+                We provide in-depth reviews, stunning photography, exclusive event coverage, and insider access to the 
+                world's most exotic automobiles. From track days to private unveilings, we're there capturing every moment.
+            </p>
+            <p>
+                Our team of automotive journalists and photographers travel the globe to bring you the latest releases, 
+                comparison tests, and behind-the-scenes stories that make the supercar world so captivating.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>Join The Journey</h2>
+            <p>
+                Whether you're a seasoned collector or just beginning to explore the world of high-performance vehicles, 
+                we invite you to join our community. Experience the thrill, the innovation, and the legacy of the world's 
+                greatest supercars.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
