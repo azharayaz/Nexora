@@ -1,0 +1,1591 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEXORA - Products</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        -webkit-user-select: none;
+        background-image: url(./images/product-page-bg.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: "Segoe UI", "Roboto", sans-serif;
+        color: #ffffff;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 60px;
+        background: rgba(0, 0, 0, 0.657);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1);
+      }
+
+      .logo h1 {
+        font-size: 36px;
+        font-weight: 900;
+        letter-spacing: 6px;
+        background: linear-gradient(90deg, #00ffff, #0080ff, #ff0000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        animation: logoGlow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes logoGlow {
+        from {
+          filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+        }
+        to {
+          filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8));
+        }
+      }
+
+      .navbar ul {
+        display: flex;
+        list-style: none;
+        gap: 45px;
+      }
+
+      .navbar a {
+        color: #00ffff;
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        position: relative;
+        text-transform: uppercase;
+      }
+
+      .navbar a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #00ffff, #ff00ff);
+        transition: width 0.3s ease;
+      }
+
+      .navbar a:hover::after {
+        width: 100%;
+      }
+
+      .navbar a:hover {
+        color: #ff00ff;
+        text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+      }
+
+      .signup-btn {
+        background: linear-gradient(135deg, #00ffff, #ff0800);
+        color: #000;
+        border: 2px solid #00ffff;
+        padding: 12px 35px;
+        font-size: 13px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 30px;
+        font-weight: 800;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .signup-btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.6s ease,
+          height 0.6s ease;
+      }
+
+      .signup-btn:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .signup-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 40px rgba(0, 255, 255, 0.6);
+        border-color: #ff00ff;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, #6a5cff 1px, transparent 1px);
+        background-size: 50px 50px;
+        opacity: 0.1;
+        animation: gridMove 20s linear infinite;
+      }
+
+      @keyframes gridMove {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(50px, 50px);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        text-align: center;
+        z-index: 2;
+      }
+
+      .hero h1 {
+        font-size: 5rem;
+        letter-spacing: 4px;
+        text-shadow:
+          0 0 20px #6a5cff,
+          0 0 40px #ff3cac;
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow:
+            0 0 20px #6a5cff,
+            0 0 40px #ff3cac;
+        }
+        to {
+          text-shadow:
+            0 0 30px #6a5cff,
+            0 0 60px #ff3cac;
+        }
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        color: #0fda89;
+      }
+
+      /* Products Container */
+      .products-container {
+        max-width: 1400px;
+        margin: 80px auto;
+        padding: 0 40px;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 40px;
+      }
+
+      /* Product Card */
+      .product-card {
+        background: rgba(0, 0, 0, 0.884);
+        border: 1px solid rgba(106, 92, 255, 0.3);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        position: relative;
+      }
+
+      .product-card:hover {
+        border-color: #ff3cac;
+        transform: translateY(-10px);
+        box-shadow:
+          0 0 40px rgba(106, 92, 255, 0.4),
+          0 0 80px rgba(255, 60, 172, 0.3);
+      }
+
+      /* Image */
+      .product-image {
+        width: 100%;
+        height: 250px;
+        background: linear-gradient(
+          135deg,
+          rgba(106, 92, 255, 0.2),
+          rgba(255, 60, 172, 0.2)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid rgba(255, 60, 172, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+
+      /* Status Badge */
+      .status-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        padding: 8px 16px;
+        background: linear-gradient(135deg, #6a5cff, #ff3cac);
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        z-index: 2;
+        box-shadow: 0 0 20px rgba(106, 92, 255, 0.5);
+      }
+
+      .status-badge.sold {
+        background: linear-gradient(135deg, #ff3cac, #ff6b6b);
+      }
+
+      /* Product Info */
+      .product-info {
+        padding: 30px;
+      }
+
+      .product-info h3 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        color: #ff3cac;
+        text-shadow: 0 0 10px #ff3cac;
+      }
+
+      .product-model {
+        font-size: 1.1rem;
+        color: #34daa2;
+        margin-bottom: 15px;
+        font-weight: 300;
+      }
+
+      .product-specs {
+        display: flex;
+        gap: 20px;
+        margin: 20px 0;
+        flex-wrap: wrap;
+      }
+
+      .spec {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .spec-label {
+        font-size: 0.85rem;
+        color: #9aa;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+      }
+
+      .spec-value {
+        font-size: 1.1rem;
+        color: #0fda89;
+        font-weight: bold;
+      }
+
+      .product-price {
+        font-size: 2.2rem;
+        color: #6a5cff;
+        font-weight: bold;
+        margin: 20px 0;
+        text-shadow: 0 0 15px #6a5cff;
+      }
+
+      .product-description {
+        font-size: 1rem;
+        color: #bbb;
+        line-height: 1.6;
+        margin-bottom: 25px;
+      }
+
+      /* Buttons */
+      .btn-group {
+        display: flex;
+        gap: 15px;
+      }
+
+      .btn {
+        flex: 1;
+        padding: 15px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #6a5cff, #ff3cac);
+        color: #fff;
+        box-shadow: 0 0 20px rgba(106, 92, 255, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 40px rgba(255, 60, 172, 0.6);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: #34daa2;
+        border: 1px solid rgba(52, 218, 162, 0.5);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(52, 218, 162, 0.1);
+        border-color: #34daa2;
+        box-shadow: 0 0 20px rgba(52, 218, 162, 0.3);
+      }
+
+      /* Filter Section */
+      .filter-section {
+        margin-bottom: 50px;
+        text-align: center;
+      }
+
+      .filter-section h2 {
+        font-size: 2rem;
+        color: #ff3cac;
+        margin-bottom: 20px;
+        text-shadow: 0 0 14px #ff3cac;
+      }
+
+      .filter-buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 12px 25px;
+        background: rgba(106, 92, 255, 0.2);
+        border: 1px solid rgba(106, 92, 255, 0.4);
+        border-radius: 6px;
+        color: #34daa2;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: linear-gradient(135deg, #6a5cff, #ff3cac);
+        border-color: transparent;
+        color: #fff;
+        box-shadow: 0 0 20px rgba(106, 92, 255, 0.5);
+      }
+
+      /* Buy Notification */
+      .buy-notification {
+        position: fixed;
+        top: 100px;
+        right: -400px;
+        background: linear-gradient(135deg, #6a5cff, #ff3cac);
+        color: #fff;
+        padding: 20px 35px;
+        border-radius: 14px;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        box-shadow: 0 15px 40px rgba(106, 92, 255, 0.6);
+        transition: right 0.5s ease;
+        z-index: 2000;
+        min-width: 300px;
+        text-align: center;
+      }
+
+      .buy-notification.show {
+        right: 30px;
+      }
+
+      /* Detail Card Modal */
+      .detail-card {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: linear-gradient(
+          135deg,
+          rgba(10, 10, 20, 0.98),
+          rgba(20, 10, 40, 0.98)
+        );
+        border: 2px solid rgba(106, 92, 255, 0.5);
+        color: #fff;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow:
+          0 0 60px rgba(106, 92, 255, 0.4),
+          0 0 120px rgba(255, 60, 172, 0.3);
+        width: 90%;
+        max-width: 700px;
+        transition:
+          transform 0.3s ease,
+          opacity 0.3s ease;
+        opacity: 0;
+        z-index: 3000;
+      }
+
+      .detail-card.show {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+
+      .detail-card h2 {
+        color: #00ffff;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      }
+
+      .detail-card .product-specs {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .detail-card .spec {
+        background: rgba(106, 92, 255, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 3px solid #00ffff;
+      }
+
+      .detail-card .spec-label {
+        font-size: 0.9rem;
+        color: #9aa;
+      }
+
+      .detail-card .spec-value {
+        font-size: 1.4rem;
+        color: #00ffff;
+        font-weight: bold;
+        text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      }
+
+      .detail-card .product-price {
+        font-size: 2.5rem;
+        color: #ff3cac;
+        text-shadow: 0 0 20px rgba(255, 60, 172, 0.6);
+      }
+
+      .close-btn {
+        width: 100%;
+        margin-top: 30px;
+        padding: 18px;
+        background: linear-gradient(135deg, #6a5cff, #ff3cac);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 20px rgba(106, 92, 255, 0.3);
+      }
+
+      .close-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 40px rgba(255, 60, 172, 0.6);
+      }
+
+      /* Responsive */
+      @media (max-width: 968px) {
+        .hero h1 {
+          font-size: 3.5rem;
+        }
+
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .detail-card {
+          padding: 30px;
+        }
+
+        .detail-card .product-specs {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Footer Styles */
+      .site-footer {
+        background: linear-gradient(180deg, #000000 0%, #0a0a1a 100%);
+        border-top: 2px solid rgba(0, 255, 255, 0.2);
+        padding: 80px 60px 40px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .site-footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          #00ffff,
+          #ff00ff,
+          transparent
+        );
+        animation: shimmer 3s linear infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%);
+        }
+
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 60px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .footer-brand h2 {
+        font-size: 40px;
+        font-weight: 900;
+        letter-spacing: 8px;
+        background: linear-gradient(135deg, #00ffff, #ff00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 20px;
+      }
+
+      .footer-brand p {
+        color: #999999;
+        line-height: 1.8;
+        font-size: 16px;
+        max-width: 500px;
+      }
+
+      .footer-links h3,
+      .footer-social h3 {
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 3px;
+        color: #00ffff;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+      }
+
+      .footer-links ul,
+      .footer-social ul {
+        list-style: none;
+      }
+
+      .footer-links li,
+      .footer-social li {
+        margin-bottom: 15px;
+      }
+
+      .footer-links a {
+        color: #b3b3b3;
+        text-decoration: none;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        position: relative;
+      }
+
+      .footer-links a::before {
+        content: "›";
+        margin-right: 8px;
+        transition: margin-right 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #00ffff;
+        transform: translateX(5px);
+      }
+
+      .footer-links a:hover::before {
+        margin-right: 15px;
+      }
+
+      .social-btn {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 15px;
+        padding: 10px 20px;
+        border-radius: 25px;
+        display: inline-block;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        font-weight: 600;
+      }
+
+      .social-btn.youtube {
+        background: linear-gradient(135deg, #ff0000, #cc0000);
+        border-color: #ff0000;
+      }
+
+      .social-btn.youtube:hover {
+        box-shadow: 0 5px 25px rgba(255, 0, 0, 0.5);
+        transform: translateY(-3px);
+      }
+
+      .social-btn.instagram {
+        background: linear-gradient(135deg, #ff0080, #ff8c00);
+        border-color: #ff0080;
+      }
+
+      .social-btn.instagram:hover {
+        box-shadow: 0 5px 25px rgba(255, 0, 128, 0.5);
+        transform: translateY(-3px);
+      }
+
+      .social-btn.twitter {
+        background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+        border-color: #1da1f2;
+      }
+
+      .social-btn.twitter:hover {
+        box-shadow: 0 5px 25px rgba(29, 161, 242, 0.5);
+        transform: translateY(-3px);
+      }
+
+      .social-btn.discord {
+        background: linear-gradient(135deg, #5865f2, #404eed);
+        border-color: #5865f2;
+      }
+
+      .social-btn.discord:hover {
+        box-shadow: 0 5px 25px rgba(88, 101, 242, 0.5);
+        transform: translateY(-3px);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .hero h2 {
+          font-size: 90px;
+        }
+
+        .bugatti-title,
+        .ferrari-title,
+        .pagani-title,
+        .bmw-title {
+          font-size: 60px;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 20px 30px;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .navbar ul {
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+
+        .hero {
+          padding: 0 40px;
+        }
+
+        .hero h2 {
+          font-size: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <h1>NEXORA</h1>
+      </div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="Product.html">PRODUCT</a></li>
+          <li><a href="Contact.html">CONTACT</a></li>
+          <li><a href="About.html">ABOUT</a></li>
+        </ul>
+      </nav>
+      <button class="signup-btn">signup</button>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>PRODUCTS</h1>
+        <p>Explore Our Collection</p>
+      </div>
+    </section>
+
+    <div class="products-container">
+      <div class="filter-section">
+        <h2>Filter By Brand</h2>
+        <div class="filter-buttons">
+          <button class="filter-btn active">All</button>
+          <button class="filter-btn">Ferrari</button>
+          <button class="filter-btn">Lamborghini</button>
+          <button class="filter-btn">McLaren</button>
+          <button class="filter-btn">Porsche</button>
+          <button class="filter-btn">Bugatti</button>
+          <button class="filter-btn">Aston Martin</button>
+          <button class="filter-btn">Koenigsegg</button>
+          <button class="filter-btn">Pagani</button>
+          <button class="filter-btn">BMW</button>
+        </div>
+      </div>
+
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card" data-brand="Ferrari">
+          <div class="product-image">
+            <img src="./images/product-1.jpg" alt="Ferrari SF90 Stradale" />
+            <div class="status-badge">Available</div>
+          </div>
+          <div class="product-info">
+            <h3>Ferrari SF90 Stradale</h3>
+            <p class="product-model">2024 Model</p>
+            <div class="product-specs">
+              <div class="spec">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">211 MPH</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">0-60 MPH</span>
+                <span class="spec-value">2.5s</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">986 HP</span>
+              </div>
+            </div>
+            <p class="product-price">$625,000</p>
+            <p class="product-description">
+              The SF90 Stradale is Ferrari's first series-production plug-in
+              hybrid. Combining a V8 engine with three electric motors for
+              unprecedented performance.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-primary">Buy Now</button>
+              <button
+                class="btn btn-secondary"
+                onclick="
+                  openDetail(
+                    'Ferrari SF90 Stradale',
+                    '2024 Model',
+                    '211 MPH',
+                    '2.5s',
+                    '986 HP',
+                    '$625,000',
+                    'The SF90 Stradale is Ferrari\'s first series-production plug-in hybrid. Combining a V8 engine with three electric motors for unprecedented performance.',
+                  )
+                "
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card" data-brand="Lamborghini">
+          <div class="product-image">
+            <img src="./images/product-2.jpg" alt="Lamborghini Revuelto" />
+            <div class="status-badge">Available</div>
+          </div>
+          <div class="product-info">
+            <h3>Lamborghini Revuelto</h3>
+            <p class="product-model">2024 Model</p>
+            <div class="product-specs">
+              <div class="spec">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">217 MPH</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">0-60 MPH</span>
+                <span class="spec-value">2.5s</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">1001 HP</span>
+              </div>
+            </div>
+            <p class="product-price">$608,358</p>
+            <p class="product-description">
+              The first hybrid V12 from Lamborghini. Revolutionary design meets
+              cutting-edge technology for an unforgettable driving experience.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-primary">Buy Now</button>
+              <button
+                class="btn btn-secondary"
+                onclick="
+                  openDetail(
+                    'Lamborghini Revuelto',
+                    '2024 Model',
+                    '217 MPH',
+                    '2.5s',
+                    '1001 HP',
+                    '$608,358',
+                    'The first hybrid V12 from Lamborghini. Revolutionary design meets cutting-edge technology for an unforgettable driving experience.',
+                  )
+                "
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card" data-brand="McLaren">
+          <div class="product-image">
+            <img src="./images/product-3.jpg" alt="McLaren 750S" />
+            <div class="status-badge">Available</div>
+          </div>
+          <div class="product-info">
+            <h3>McLaren 750S</h3>
+            <p class="product-model">2024 Model</p>
+            <div class="product-specs">
+              <div class="spec">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">206 MPH</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">0-60 MPH</span>
+                <span class="spec-value">2.7s</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">740 HP</span>
+              </div>
+            </div>
+            <p class="product-price">$324,000</p>
+            <p class="product-description">
+              Lighter, faster, and sharper. The 750S delivers pure McLaren
+              supercar DNA with enhanced aerodynamics and performance.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-primary">Buy Now</button>
+              <button
+                class="btn btn-secondary"
+                onclick="
+                  openDetail(
+                    'McLaren 750S',
+                    '2024 Model',
+                    '206 MPH',
+                    '2.7s',
+                    '740 HP',
+                    '$324,000',
+                    'Lighter, faster, and sharper. The 750S delivers pure McLaren supercar DNA with enhanced aerodynamics and performance.',
+                  )
+                "
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card" data-brand="Porsche">
+          <div class="product-image">
+            <img src="./images/product-4.jpg" alt="Porsche 911 GT3 RS" />
+            <div class="status-badge sold">Sold Out</div>
+          </div>
+          <div class="product-info">
+            <h3>Porsche 911 GT3 RS</h3>
+            <p class="product-model">2024 Model</p>
+            <div class="product-specs">
+              <div class="spec">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">184 MPH</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">0-60 MPH</span>
+                <span class="spec-value">3.0s</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">518 HP</span>
+              </div>
+            </div>
+            <p class="product-price">$241,300</p>
+            <p class="product-description">
+              The ultimate track-focused 911. Featuring massive aero upgrades
+              and a naturally aspirated flat-six that sings to 9,000 RPM.
+            </p>
+            <div class="btn-group">
+              <button
+                class="btn btn-secondary"
+                onclick="
+                  openDetail(
+                    'Porsche 911 GT3 RS',
+                    '2024 Model',
+                    '184 MPH',
+                    '3.0s',
+                    '518 HP',
+                    '$241,300',
+                    'The ultimate track-focused 911. Featuring massive aero upgrades and a naturally aspirated flat-six that sings to 9,000 RPM.',
+                  )
+                "
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card" data-brand="Bugatti">
+          <div class="product-image">
+            <img
+              src="./images/product-5.jpg"
+              alt="Bugatti Chiron Super Sport"
+            />
+            <div class="status-badge">Available</div>
+          </div>
+          <div class="product-info">
+            <h3>Bugatti Chiron Super Sport</h3>
+            <p class="product-model">2024 Model</p>
+            <div class="product-specs">
+              <div class="spec">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">273 MPH</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">0-60 MPH</span>
+                <span class="spec-value">2.4s</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">1577 HP</span>
+              </div>
+            </div>
+            <p class="product-price">$3,900,000</p>
+            <p class="product-description">
+              The pinnacle of automotive engineering. An 8.0L quad-turbo W16
+              engine producing otherworldly performance and luxury.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-primary">Buy Now</button>
+              <button
+                class="btn btn-secondary"
+                onclick="
+                  openDetail(
+                    'Bugatti Chiron Super Sport',
+                    '2024 Model',
+                    '273 MPH',
+                    '2.4s',
+                    '1577 HP',
+                    '$3,900,000',
+                    'The pinnacle of automotive engineering. An 8.0L quad-turbo W16 engine producing otherworldly performance and luxury.',
+                  )
+                "
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card" data-brand="McLaren">
+          <div class="product-image">
+            <img src="./images/product-6.jpg" alt="McLaren Artura" />
+            <div class="status-badge">Available</div>
+          </div>
+          <div class="product-info">
+            <h3>McLaren Artura</h3>
+            <p class="product-model">2024 Model</p>
+            <div class="product-specs">
+              <div class="spec">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">205 MPH</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">0-60 MPH</span>
+                <span class="spec-value">3.0s</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">671 HP</span>
+              </div>
+            </div>
+            <p class="product-price">$237,500</p>
+            <p class="product-description">
+              McLaren's first series-production hybrid supercar. Combining
+              electric power with a twin-turbo V6 for effortless performance.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-primary">Buy Now</button>
+              <button
+                class="btn btn-secondary"
+                onclick="
+                  openDetail(
+                    'McLaren Artura',
+                    '2024 Model',
+                    '205 MPH',
+                    '3.0s',
+                    '671 HP',
+                    '$237,500',
+                    'McLaren\'s first series-production hybrid supercar. Combining electric power with a twin-turbo V6 for effortless performance.',
+                  )
+                "
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card" data-brand="Aston Martin">
+          <div class="product-image">
+            <img src="./images/product-7.jpg" alt="Aston Martin Valkyrie" />
+            <div class="status-badge">Available</div>
+          </div>
+          <div class="product-info">
+            <h3>Aston Martin Valkyrie</h3>
+            <p class="product-model">2024 Model</p>
+            <div class="product-specs">
+              <div class="spec">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">250 MPH</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">0-60 MPH</span>
+                <span class="spec-value">2.5s</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">1160 HP</span>
+              </div>
+            </div>
+            <p class="product-price">$3,200,000</p>
+            <p class="product-description">
+              A Formula 1–inspired hypercar built for extreme performance and
+              advanced aerodynamics.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-primary">Buy Now</button>
+              <button
+                class="btn btn-secondary"
+                onclick="
+                  openDetail(
+                    'Aston Martin Valkyrie',
+                    '2024 Model',
+                    '250 MPH',
+                    '2.5s',
+                    '1160 HP',
+                    '$3,200,000',
+                    'A Formula 1–inspired hypercar built for extreme performance and advanced aerodynamics.',
+                  )
+                "
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card" data-brand="Koenigsegg">
+          <div class="product-image">
+            <img src="./images/product-8.jpg" alt="Koenigsegg Jesko" />
+            <div class="status-badge">Available</div>
+          </div>
+          <div class="product-info">
+            <h3>Koenigsegg Jesko</h3>
+            <p class="product-model">2024 Model</p>
+            <div class="product-specs">
+              <div class="spec">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">300+ MPH</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">0-60 MPH</span>
+                <span class="spec-value">2.5s</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">1600 HP</span>
+              </div>
+            </div>
+            <p class="product-price">$3,000,000</p>
+            <p class="product-description">
+              Designed to shatter speed records with a twin-turbo V8 and
+              revolutionary transmission.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-primary">Buy Now</button>
+              <button
+                class="btn btn-secondary"
+                onclick="
+                  openDetail(
+                    'Koenigsegg Jesko',
+                    '2024 Model',
+                    '300+ MPH',
+                    '2.5s',
+                    '1600 HP',
+                    '$3,000,000',
+                    'Designed to shatter speed records with a twin-turbo V8 and revolutionary transmission.',
+                  )
+                "
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product-card" data-brand="Pagani">
+          <div class="product-image">
+            <img src="./images/product-9.jpg" alt="Pagani Huayra R" />
+            <div class="status-badge sold">Sold Out</div>
+          </div>
+          <div class="product-info">
+            <h3>Pagani Huayra R</h3>
+            <p class="product-model">2024 Model</p>
+            <div class="product-specs">
+              <div class="spec">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">230 MPH</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">0–60 MPH</span>
+                <span class="spec-value">2.8s</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">850 HP</span>
+              </div>
+            </div>
+            <p class="product-price">$2,800,000</p>
+            <p class="product-description">
+              A track-only masterpiece combining art, engineering, and a
+              screaming V12 engine.
+            </p>
+            <div class="btn-group">
+              <button
+                class="btn btn-secondary"
+                onclick="
+                  openDetail(
+                    'Pagani Huayra R',
+                    '2024 Model',
+                    '230 MPH',
+                    '2.8s',
+                    '850 HP',
+                    '$2,800,000',
+                    'A track-only masterpiece combining art, engineering, and a screaming V12 engine.',
+                  )
+                "
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product-card" data-brand="Koenigsegg">
+          <div class="product-image">
+            <img src="./images/product-10.jpg" alt="Koenigsegg Gemera" />
+            <div class="status-badge">Available</div>
+          </div>
+          <div class="product-info">
+            <h3>Koenigsegg Gemera</h3>
+            <p class="product-model">2024 Model</p>
+            <div class="product-specs">
+              <div class="spec">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">350 MPH</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">0-60 MPH</span>
+                <span class="spec-value">2.5s</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">1760 HP</span>
+              </div>
+            </div>
+            <p class="product-price">$4,200,000</p>
+            <p class="product-description">
+              Koenigsegg Gemera is a revolutionary four-seat hypercar that
+              redefines performance and practicality. Powered by Koenigsegg's
+              groundbreaking hybrid technology.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-primary">Buy Now</button>
+              <button
+                class="btn btn-secondary"
+                onclick="
+                  openDetail(
+                    'Koenigsegg Gemera',
+                    '2024 Model',
+                    '350 MPH',
+                    '2.5s',
+                    '1760 HP',
+                    '$4,200,000',
+                    'Koenigsegg Gemera is a revolutionary four-seat hypercar that redefines performance and practicality. Powered by Koenigsegg\'s groundbreaking hybrid technology.',
+                  )
+                "
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product-card" data-brand="BMW">
+          <div class="product-image">
+            <img src="./images/product-11.jpg" alt="BMW M Hybrid V8 LMDh" />
+            <div class="status-badge">Available</div>
+          </div>
+          <div class="product-info">
+            <h3>BMW M Hybrid V8 LMDh Prototype</h3>
+            <p class="product-model">2022 Model</p>
+            <div class="product-specs">
+              <div class="spec">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">450 MPH</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">0-60 MPH</span>
+                <span class="spec-value">1s</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">2260 HP</span>
+              </div>
+            </div>
+            <p class="product-price">$8,200,000</p>
+            <p class="product-description">
+              BMW M Hybrid V8 LMDh Prototype is BMW's cutting-edge endurance
+              race car built to dominate the world's toughest circuits.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-primary">Buy Now</button>
+              <button
+                class="btn btn-secondary"
+                onclick="
+                  openDetail(
+                    'BMW M Hybrid V8 LMDh Prototype',
+                    '2022 Model',
+                    '450 MPH',
+                    '1s',
+                    '2260 HP',
+                    '$8,200,000',
+                    'BMW M Hybrid V8 LMDh Prototype is BMW\'s cutting-edge endurance race car built to dominate the world\'s toughest circuits.',
+                  )
+                "
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="product-card" data-brand="McLaren">
+          <div class="product-image">
+            <img src="./images/product-12.jpg" alt="McLaren MCL38" />
+            <div class="status-badge">Available</div>
+          </div>
+          <div class="product-info">
+            <h3>McLaren MCL38</h3>
+            <p class="product-model">2023 Model</p>
+            <div class="product-specs">
+              <div class="spec">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">600 MPH</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">0-60 MPH</span>
+                <span class="spec-value">0.5s</span>
+              </div>
+              <div class="spec">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">3160 HP</span>
+              </div>
+            </div>
+            <p class="product-price">$10,200,000</p>
+            <p class="product-description">
+              The McLaren MCL38 is McLaren's latest Formula 1 challenger,
+              engineered for peak performance on the world's fastest circuits.
+              Featuring a turbocharged V6 hybrid power unit.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-primary">Buy Now</button>
+              <button
+                class="btn btn-secondary"
+                onclick="
+                  openDetail(
+                    'McLaren MCL38',
+                    '2023 Model',
+                    '600 MPH',
+                    '0.5s',
+                    '3160 HP',
+                    '$10,200,000',
+                    'The McLaren MCL38 is McLaren\'s latest Formula 1 challenger, engineered for peak performance on the world\'s fastest circuits. Featuring a turbocharged V6 hybrid power unit.',
+                  )
+                "
+              >
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail Card Modal -->
+    <div class="detail-card" id="detailCard">
+      <h2 id="detailName"></h2>
+      <p class="product-model" id="detailModel"></p>
+      <div class="product-specs">
+        <div class="spec">
+          <span class="spec-label">Top Speed</span>
+          <span class="spec-value" id="detailTopSpeed"></span>
+        </div>
+        <div class="spec">
+          <span class="spec-label">0-60 MPH</span>
+          <span class="spec-value" id="detailZero"></span>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Power</span>
+          <span class="spec-value" id="detailPower"></span>
+        </div>
+      </div>
+      <p class="product-price" id="detailPrice"></p>
+      <p class="product-description" id="detailDescription"></p>
+      <button class="close-btn" id="closeCardBtn">Close</button>
+    </div>
+
+    <script>
+      let notificationCount = 0;
+
+      function showBuyNotification(carName) {
+        const audio = new Audio("./audio/notification.mp3");
+        audio.volume = 1;
+        audio.play().catch((e) => console.log("Audio play failed:", e));
+
+        const notification = document.createElement("div");
+        notification.className = "buy-notification";
+        notification.textContent = `✓ Successfully purchased ${carName}!`;
+
+        const topPosition = 100 + notificationCount * 90;
+        notification.style.top = topPosition + "px";
+
+        document.body.appendChild(notification);
+        notificationCount++;
+
+        setTimeout(() => {
+          notification.classList.add("show");
+        }, 10);
+
+        setTimeout(() => {
+          notification.classList.remove("show");
+          setTimeout(() => {
+            notification.remove();
+            notificationCount--;
+            repositionNotifications();
+          }, 500);
+        }, 3000);
+      }
+
+      function repositionNotifications() {
+        const notifications = document.querySelectorAll(
+          ".buy-notification.show",
+        );
+        notifications.forEach((notif, index) => {
+          notif.style.top = 100 + index * 90 + "px";
+        });
+      }
+
+      document.querySelectorAll(".btn-primary").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const card = this.closest(".product-card");
+          const carName = card.querySelector("h3").textContent;
+          showBuyNotification(carName);
+        });
+      });
+
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const productCards = document.querySelectorAll(".product-card");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+
+          const filterValue = this.textContent.trim();
+
+          productCards.forEach((card) => {
+            if (filterValue === "All") {
+              card.style.display = "block";
+            } else if (card.getAttribute("data-brand") === filterValue) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
+      function openDetail(
+        name,
+        model,
+        topSpeed,
+        zero,
+        power,
+        price,
+        description,
+      ) {
+        document.getElementById("detailName").textContent = name;
+        document.getElementById("detailModel").textContent = model;
+        document.getElementById("detailTopSpeed").textContent = topSpeed;
+        document.getElementById("detailZero").textContent = zero;
+        document.getElementById("detailPower").textContent = power;
+        document.getElementById("detailPrice").textContent = price;
+        document.getElementById("detailDescription").textContent = description;
+        document.getElementById("detailCard").classList.add("show");
+      }
+
+      document.getElementById("closeCardBtn").addEventListener("click", () => {
+        document.getElementById("detailCard").classList.remove("show");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (e.target.id === "detailCard") {
+          document.getElementById("detailCard").classList.remove("show");
+        }
+      });
+    </script>
+  </body>
+  <footer>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h2>NEXORA</h2>
+          <p>
+            Where speed meets innovation. Discover the world's most powerful and
+            iconic supercars.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Product.html">Products</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="About.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <ul>
+            <li>
+              <a
+                class="social-btn youtube"
+                href="https://www.youtube.com/channel/UCIrYPBAJIk83GRvIEJD1GTQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                >▶ YouTube</a
+              >
+            </li>
+            <li>
+              <a
+                class="social-btn instagram"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                >📸 Instagram</a
+              >
+            </li>
+            <li>
+              <a
+                class="social-btn twitter"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                >🐦 X / Twitter</a
+              >
+            </li>
+            <li>
+              <a
+                class="social-btn discord"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                >🎮 Discord</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </footer>
+</html>

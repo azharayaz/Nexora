@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEXORA - Contact</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        -webkit-user-select: none;
+        background-image: url(./images/contact-us.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: "Segoe UI", "Roboto", sans-serif;
+        color: #ffffff;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      /* Header */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 60px;
+        background: rgba(0, 0, 0, 0.85);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1);
+      }
+
+      .logo h1 {
+        font-size: 36px;
+        font-weight: 900;
+        letter-spacing: 6px;
+        background: linear-gradient(90deg, #00ffff, #0080ff, #ff0000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+        }
+        to {
+          filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8));
+        }
+      }
+
+      .navbar ul {
+        display: flex;
+        list-style: none;
+        gap: 45px;
+      }
+
+      .navbar a {
+        color: #00ffff;
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        position: relative;
+        text-transform: uppercase;
+      }
+
+      .navbar a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #00ffff, #ff00ff);
+        transition: width 0.3s ease;
+      }
+
+      .navbar a:hover::after {
+        width: 100%;
+      }
+
+      .navbar a:hover {
+        color: #ff00ff;
+        text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+      }
+
+      .signup-btn {
+        background: linear-gradient(135deg, #00ffff, #ff0800);
+        color: #000;
+        border: 2px solid #00ffff;
+        padding: 12px 35px;
+        font-size: 13px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 30px;
+        font-weight: 800;
+        transition: all 0.4s ease;
+      }
+
+      .signup-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 40px rgba(0, 255, 255, 0.6);
+        border-color: #ff00ff;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 80px;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 5rem;
+        letter-spacing: 4px;
+        text-shadow:
+          0 0 20px #6a5cff,
+          0 0 40px #ff3cac;
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        color: #0fda89;
+      }
+
+      /* Contact Container */
+      .contact-container {
+        max-width: 1000px;
+        margin: 80px auto;
+        padding: 0 40px;
+      }
+
+      .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .info-card {
+        background: linear-gradient(
+          135deg,
+          rgba(9, 9, 56, 0.8),
+          rgba(80, 23, 80, 0.8)
+        );
+        padding: 40px;
+        border: 1px solid rgba(106, 92, 255, 0.3);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .info-card:hover {
+        border-color: #ff3cac;
+        transform: translateY(-10px);
+        box-shadow: 0 0 40px rgba(106, 92, 255, 0.4);
+      }
+
+      .info-card h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #ff3cac;
+      }
+
+      .info-card p {
+        font-size: 1.1rem;
+        color: #34daa2;
+        line-height: 1.8;
+      }
+
+      .info-card a {
+        color: #0fda89;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .info-card a:hover {
+        color: #fff;
+        text-shadow: 0 0 10px #6a5cff;
+      }
+
+
+      .info-card-social {
+        width: 920px;
+        background: linear-gradient(
+          135deg,
+          rgba(9, 9, 56, 0.8),
+          rgba(80, 23, 80, 0.8)
+        );
+        padding: 40px;
+        border: 1px solid rgba(106, 92, 255, 0.3);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+      }
+      .info-card-social .footer-social ul {
+        justify-content: center;
+        display: flex;
+        gap: 20px;
+        list-style: none;
+      }
+
+      .info-card-social:hover {
+        border-color: #ff3cac;
+        transform: translateY(-10px);
+        box-shadow: 0 0 40px rgba(106, 92, 255, 0.4);
+      }
+
+      .info-card-social h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #ff3cac;
+      }
+
+      .info-card-social p {
+        font-size: 1.1rem;
+        color: #34daa2;
+        line-height: 1.8;
+      }
+
+      .info-card-social a {
+        color: #0fda89;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .info-card-social a:hover {
+        color: #fff;
+        text-shadow: 0 0 10px #6a5cff;
+      }
+      
+      /* Social Links */
+      .social-links {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .social-links a {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          135deg,
+          rgba(106, 92, 255, 0.2),
+          rgba(255, 60, 172, 0.2)
+        );
+        border: 1px solid rgba(255, 60, 172, 0.3);
+        border-radius: 50%;
+        color: #0fda89;
+        font-size: 1.3rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .social-links a:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 30px rgba(106, 92, 255, 0.5);
+        color: #fff;
+      }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <h1>NEXORA</h1>
+      </div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="Product.html">PRODUCT</a></li>
+          <li><a href="Contact.html">CONTACT</a></li>
+          <li><a href="About.html">ABOUT</a></li>
+        </ul>
+      </nav>
+      <button class="signup-btn">signup</button>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>CONTACT US</h1>
+        <p>Let's Talk Supercars</p>
+      </div>
+    </section>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="info-card">
+          <h3>📍 Location</h3>
+          <p>
+            123 Speed Lane<br />
+            Monaco Grand Prix District<br />
+            Monte Carlo, MC 98000
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h3>📧 Email</h3>
+          <p>
+            <a href="mailto:AzharAyaz009988@gmail.com"
+              >AzharAyaz009988@gmail.com</a
+            ><br />
+            <a href="mailto:sales@supercars.com">sales@supercars.com</a>
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h3>📱 Phone</h3>
+          <p>
+            +1 (555) SUPERCAR<br />
+            +1 (555) 787-3722
+          </p>
+        </div>
+
+        <div class="info-card-social">
+          <h3>🌐 Follow Us</h3>
+
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <ul>
+            <li>
+              <a
+                class="social-btn youtube"
+                href="https://www.youtube.com/channel/UCIrYPBAJIk83GRvIEJD1GTQ"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ▶ YouTube
+              </a>
+            </li>
+
+            <li>
+              <a
+                class="social-btn instagram"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                📸 Instagram
+              </a>
+            </li>
+
+            <li>
+              <a
+                class="social-btn twitter"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                🐦 X / Twitter
+              </a>
+            </li>
+
+            <li>
+              <a
+                class="social-btn discord"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                🎮 Discord
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

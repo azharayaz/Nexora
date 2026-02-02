@@ -1,0 +1,1287 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    -webkit-user-select: none;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    background: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px;
+    background: rgba(0, 0, 0, 0.85);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 255, 255, 0.1);
+}
+
+.logo h1 {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    background: linear-gradient(90deg, #00ffff, #0080ff, #ff0000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+    }
+
+    to {
+        filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8));
+    }
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 45px;
+}
+
+.navbar a {
+    color: #00ffff;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00ffff, #ff00ff);
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+.navbar a:hover {
+    color: #ff00ff;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+}
+
+.signup-btn {
+    background: linear-gradient(135deg, #00ffff, #ff0800);
+    color: #000;
+    border: 2px solid #00ffff;
+    padding: 12px 35px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: 800;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.signup-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.signup-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.signup-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(0, 255, 255, 0.6);
+    border-color: #ff00ff;
+}
+
+/* Hero Section - Porsche */
+.hero {
+    background-image: url(./images/background.jpg);
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 100px;
+    position: relative;
+    margin-top: 90px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '911';
+    position: absolute;
+    font-size: 350px;
+    font-weight: 900;
+    color: rgba(0, 255, 255, 0.11);
+    right: -80px;
+    top: 50%;
+    transform: translateY(-50%);
+    letter-spacing: 10px;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.226) 0%, transparent 60%);
+    top: 10%;
+    right: 0%;
+    border-radius: 50%;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+.hero h2 {
+    font-size: 120px;
+    font-weight: 900;
+    letter-spacing: 15px;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #ff0000cb, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 50px rgba(0, 255, 255, 0.3);
+}
+
+.hero p {
+    max-width: 600px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #b3b3b3;
+    position: relative;
+    z-index: 1;
+    border-left: 4px solid #00ffff;
+    padding-left: 25px;
+    font-weight: 300;
+}
+
+/* Bugatti Section */
+.bugatti-section {
+    min-height: 100vh;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 30px;
+    padding: 100px 80px;
+    background: linear-gradient(135deg, #07071b 0%, #1a0a1a 100%);
+    overflow: hidden;
+}
+
+.bugatti-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 255, 255, 0.03) 2px,
+            rgba(0, 255, 255, 0.03) 4px);
+    animation: scan 10s linear infinite;
+}
+
+@keyframes scan {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(50px);
+    }
+}
+
+.bugatti-section>img {
+    display: none;
+}
+
+.bugatti-card {
+    background-image: url(./images/bugatti-card.jpg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bugatti-card::before {
+    position: absolute;
+    font-size: 80px;
+    font-weight: 900;
+    color: rgba(0, 255, 255, 0.05);
+    transform: rotate(-15deg);
+}
+
+.bugatti-card img {
+    display: none;
+}
+
+.bugatti-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 50px rgba(0, 255, 255, 0.4);
+    border-color: #ff00ff;
+}
+
+.bugatti-card-2 {
+    background-image: url(./images/bugatti-card-2.jpg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgba(255, 0, 255, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(255, 0, 255, 0.2);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bugatti-card-2::before {
+    position: absolute;
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(255, 0, 255, 0.05);
+}
+
+.bugatti-card-2 img {
+    display: none;
+}
+
+.bugatti-card-2:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 50px rgba(255, 0, 255, 0.4);
+    border-color: #00ffff;
+}
+
+.para {
+    background: linear-gradient(135deg, #090938 0%, #501750 100%);
+    background-position: center;
+    background-size: cover;
+    grid-column: 1 / -1;
+    padding: 60px;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 20px;
+    position: relative;
+}
+
+.bugatti-title {
+    font-size: 80px;
+    font-weight: 900;
+    letter-spacing: 20px;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #00ffff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
+.learn-more-btn {
+    background: linear-gradient(135deg, #ff00ff, #ff0080);
+    color: white;
+    border: 2px solid #ff00ff;
+    padding: 15px 40px;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: 800;
+    margin: 20px auto;
+    display: block;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+}
+
+.learn-more-btn:hover:active {
+  transform: translateY(10px); /* button moves down */
+  box-shadow: 0 1px 0 #ff2a00; /* shadow shrinks */
+}
+.learn-more-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 0, 255, 0.8);
+    background: linear-gradient(135deg, #ff0080, #ff00ff);
+}
+
+.para p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #2bff0080;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Ferrari Section */
+.ferrari-section {
+    min-height: 100vh;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 100px 80px;
+    background: radial-gradient(ellipse at top left, #1a0000 0%, #000000 100%);
+    overflow: hidden;
+}
+
+.ferrari-section::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+    bottom: -200px;
+    left: -200px;
+    border-radius: 50%;
+}
+.startEngine-Btn {
+    background: linear-gradient(135deg, #ff00ff, #ff0080);
+    color: white;
+    height: 100px;
+    border: 2px solid #ff00ff;
+    font-size: 15px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 30px;
+    margin: auto;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+}
+
+.startEngine-btn:hover:active {
+  transform: translateY(10px); /* button moves down */
+  box-shadow: 0 1px 0 #ff2a00; /* shadow shrinks */
+}
+.startEngine-Btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 0, 255, 0.8);
+    background: linear-gradient(135deg, #ff0080, #ff00ff);
+}
+
+.ferrari-section>img {
+    display: none;
+}
+
+.ferrari-title {
+    position: absolute;
+    top: 100px;
+    right: 80px;
+    font-size: 90px;
+    font-weight: 900;
+    letter-spacing: 25px;
+    background: linear-gradient(135deg, #ff0000, #a200ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    z-index: 10;
+}
+
+.ferrari-card {
+    background-image: url(./images/ferrari-card.jpg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgba(255, 0, 0, 0.4);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(255, 0, 0, 0.3);
+    transition: all 0.4s ease;
+    min-height: 350px;
+    margin-top: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.ferrari-card::before {
+    position: absolute;
+    font-size: 40px;
+    font-weight: 900;
+    color: rgba(255, 0, 0, 0.05);
+    transform: rotate(-10deg);
+    text-align: center;
+}
+
+.ferrari-card img {
+    display: none;
+}
+
+.ferrari-card:hover {
+    transform: translateY(-10px) rotate(2deg);
+    box-shadow: 0 15px 60px rgba(255, 0, 0, 0.5);
+}
+
+.ferrari-card-2 {
+    background-image: url(./images/ferrari-card-2.jpg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgba(255, 100, 0, 0.4);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(255, 100, 0, 0.3);
+    transition: all 0.4s ease;
+    min-height: 350px;
+    margin-top: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.ferrari-card-2::before {
+    position: absolute;
+    font-size: 150px;
+    font-weight: 900;
+    color: rgba(255, 100, 0, 0.08);
+}
+
+.ferrari-card-2 img {
+    display: none;
+}
+
+.ferrari-card-2:hover {
+    transform: translateY(-10px) rotate(-2deg);
+    box-shadow: 0 15px 60px rgba(255, 100, 0, 0.5);
+}
+
+.para-2 {
+    grid-column: 1 / -1;
+    padding: 50px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 20px;
+    margin-top: 30px;
+}
+
+.para-2 p {
+    font-size: 20px;
+    line-height: 1.9;
+    color: #cccccc;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-left: 4px solid #ff0000;
+    padding-left: 30px;
+}
+
+/* Pagani Section */
+.pagani-section {
+    min-height: 100vh;
+    position: relative;
+    display: grid;
+    flex-direction: column;
+    padding: 100px 80px;
+    background: linear-gradient(135deg, #0a1a0a 0%, #000000 100%);
+    overflow: hidden;
+}
+
+.pagani-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        repeating-linear-gradient(90deg,
+            transparent,
+            transparent 50px,
+            rgba(0, 255, 100, 0.03) 50px,
+            rgba(0, 255, 100, 0.03) 51px),
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 50px,
+            rgba(0, 255, 100, 0.03) 50px,
+            rgba(0, 255, 100, 0.03) 51px);
+}
+
+.pagani-section>img {
+    display: none;
+}
+
+.pagani-title {
+    font-size: 100px;
+    font-weight: 900;
+    letter-spacing: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, #00ff88, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.pagani-card {
+    background-image: url(./images/pagani-card.jpg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgba(0, 255, 136, 0.3);
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 8px 32px rgba(0, 255, 136, 0.2);
+    margin: 20px 0;
+    transition: all 0.4s ease;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.pagani-card-2 {
+    background-image: url(./images/pagani-card-2.jpg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgba(0, 255, 136, 0.3);
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 8px 32px rgba(0, 255, 136, 0.2);
+    margin: 20px 0;
+    transition: all 0.4s ease;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.pagani-card::before {
+    position: absolute;
+    font-size: 100px;
+    font-weight: 900;
+}
+
+.pagani-card-2::before {
+    position: absolute;
+    font-size: 100px;
+    font-weight: 900;
+    color: rgba(0, 255, 255, 0.05);
+}
+
+.pagani-card img,
+.pagani-card-2 img {
+    display: none;
+}
+
+.pagani-card:hover,
+.pagani-card-2:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 50px rgba(0, 255, 136, 0.4);
+    border-color: #00ffff;
+}
+
+.pagani-para-3 {
+    margin-top: 40px;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.pagani-para-3>p {
+    font-size: 19px;
+    line-height: 1.8;
+    color: #b3b3b3;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.pagani-para-4 {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), transparent);
+    padding: 30px;
+    border-left: 4px solid #00ff88;
+    border-radius: 10px;
+}
+
+.pagani-para-4 p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #999999;
+    font-style: italic;
+}
+
+/* BMW Section */
+.bmw-section {
+    min-height: 100vh;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 100px 80px;
+    background: radial-gradient(ellipse at bottom right, #001a33 0%, #000000 100%);
+    overflow: hidden;
+}
+
+.bmw-section::before {
+    content: '';
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(0, 136, 255, 0.08) 0%, transparent 70%);
+    top: -300px;
+    right: -300px;
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.bmw-section>img {
+    display: none;
+}
+
+.bmw-title {
+    position: absolute;
+    top: 100px;
+    left: 80px;
+    font-size: 110px;
+    font-weight: 900;
+    letter-spacing: 40px;
+    background: linear-gradient(135deg, #0088ff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    z-index: 10;
+}
+
+.bmw-card {
+    background-image: url(./images/bmw-card.jpg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgba(0, 136, 255, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 136, 255, 0.2);
+    transition: all 0.4s ease;
+    min-height: 300px;
+    margin-top: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.bmw-card-2 {
+    background-image: url(./images/bmw-card-2.jpg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgba(0, 136, 255, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 136, 255, 0.2);
+    transition: all 0.4s ease;
+    min-height: 300px;
+    margin-top: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.bmw-card::before {
+    position: absolute;
+    font-size: 60px;
+    font-weight: 900;
+    color: rgba(0, 136, 255, 0.06);
+    transform: rotate(-5deg);
+}
+
+.bmw-card-2::before {
+    position: absolute;
+    font-size: 40px;
+    font-weight: 900;
+    color: rgba(0, 255, 255, 0.06);
+    transform: rotate(5deg);
+    text-align: center;
+}
+
+.bmw-card img,
+.bmw-card-2 img {
+    display: none;
+}
+
+.bmw-card:hover,
+.bmw-card-2:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 60px rgba(0, 136, 255, 0.5);
+    border-color: #00ffff;
+}
+
+.para-5,
+.para-6 {
+    grid-column: 1 / -1;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 136, 255, 0.2);
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.para-5 p,
+.para-6 p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #b3b3b3;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Footer Styles */
+.site-footer {
+    background: linear-gradient(180deg, #000000 0%, #0a0a1a 100%);
+    border-top: 2px solid rgba(0, 255, 255, 0.2);
+    padding: 80px 60px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ffff, #ff00ff, transparent);
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-brand h2 {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    background: linear-gradient(135deg, #00ffff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+}
+
+.footer-brand p {
+    color: #999999;
+    line-height: 1.8;
+    font-size: 16px;
+    max-width: 500px;
+}
+
+.footer-links h3,
+.footer-social h3 {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #00ffff;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.footer-links ul,
+.footer-social ul {
+    list-style: none;
+}
+
+.footer-links li,
+.footer-social li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+}
+
+.footer-links a::before {
+    content: '›';
+    margin-right: 8px;
+    transition: margin-right 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #00ffff;
+    transform: translateX(5px);
+}
+
+.footer-links a:hover::before {
+    margin-right: 15px;
+}
+
+.social-btn {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-weight: 600;
+}
+
+.social-btn.youtube {
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    border-color: #ff0000;
+}
+
+.social-btn.youtube:hover {
+    box-shadow: 0 5px 25px rgba(255, 0, 0, 0.5);
+    transform: translateY(-3px);
+}
+
+.social-btn.instagram {
+    background: linear-gradient(135deg, #ff0080, #ff8c00);
+    border-color: #ff0080;
+}
+
+.social-btn.instagram:hover {
+    box-shadow: 0 5px 25px rgba(255, 0, 128, 0.5);
+    transform: translateY(-3px);
+}
+
+.social-btn.twitter {
+    background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+    border-color: #1da1f2;
+}
+
+.social-btn.twitter:hover {
+    box-shadow: 0 5px 25px rgba(29, 161, 242, 0.5);
+    transform: translateY(-3px);
+}
+
+.social-btn.discord {
+    background: linear-gradient(135deg, #5865f2, #404eed);
+    border-color: #5865f2;
+}
+
+.social-btn.discord:hover {
+    box-shadow: 0 5px 25px rgba(88, 101, 242, 0.5);
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hero h2 {
+        font-size: 90px;
+    }
+
+    .bugatti-title,
+    .ferrari-title,
+    .pagani-title,
+    .bmw-title {
+        font-size: 60px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 20px 30px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .navbar ul {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .hero {
+        padding: 0 40px;
+    }
+
+    .hero h2 {
+        font-size: 60px;
+    }
+}
+
+
+/* ========================================
+   SIGNUP MODAL STYLES
+   Add this to the end of your style.css file
+   ======================================== */
+
+/* Backdrop overlay */
+.backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  backdrop-filter: blur(5px);
+}
+
+.backdrop.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Signup card modal */
+.signup-card {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    135deg,
+    rgba(9, 9, 56, 0.95),
+    rgba(80, 23, 80, 0.95)
+  );
+  border: 1px solid rgba(106, 92, 255, 0.3);
+  border-radius: 6px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-width: 400px;
+  padding: 40px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.signup-card.active {
+  display: block;
+  animation: slideIn 0.3s ease-out;
+}
+
+.signup-card:hover {
+  border-color: #ff3cac;
+  box-shadow: 0 0 40px rgba(106, 92, 255, 0.6);
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #f00c0c;
+  font-size: 32px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  background: rgba(255, 60, 172, 0.2);
+  transform: rotate(90deg);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Signup card content */
+.signup-card h2 {
+  color: #ff3cac;
+  margin-bottom: 10px;
+  font-size: 28px;
+  text-align: center;
+}
+
+.signup-card p {
+  color: #34daa2;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: #0fda89;
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid rgba(106, 92, 255, 0.3);
+  background: rgba(9, 9, 56, 0.5);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-group input:focus {
+  border-color: #ff3cac;
+  box-shadow: 0 0 20px rgba(106, 92, 255, 0.4);
+}
+
+/* Submit button */
+.signup-submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #6a5cff 0%, #ff3cac 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.signup-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(106, 92, 255, 0.6);
+}
+
+.signup-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+  color: #34daa2;
+  font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid rgba(106, 92, 255, 0.3);
+}
+
+.divider::before {
+  margin-right: 10px;
+}
+
+.divider::after {
+  margin-left: 10px;
+}
+
+/* Social buttons in modal */
+.social-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.social-btn-modal {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid rgba(106, 92, 255, 0.3);
+  border-radius: 10px;
+  background: rgba(9, 9, 56, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0fda89;
+}
+
+.social-btn-modal:hover {
+  border-color: #ff3cac;
+  color: #fff;
+  text-shadow: 0 0 10px #6a5cff;
+  box-shadow: 0 0 20px rgba(106, 92, 255, 0.4);
+}
+
+/* Login link */
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #34daa2;
+}
+
+.login-link a {
+  color: #0fda89;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.login-link a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px #6a5cff;
+}
+
+/* Scrollbar styling for modal */
+.signup-card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.signup-card::-webkit-scrollbar-track {
+  background: rgba(9, 9, 56, 0.5);
+  border-radius: 10px;
+}
+
+.signup-card::-webkit-scrollbar-thumb {
+  background: rgba(106, 92, 255, 0.5);
+  border-radius: 10px;
+}
+
+.signup-card::-webkit-scrollbar-thumb:hover {
+  background: rgba(106, 92, 255, 0.7);
+}
+
+/* Responsive design */
+@media (max-width: 500px) {
+  .signup-card {
+    width: 95%;
+    padding: 30px 20px;
+  }
+  
+  .signup-card h2 {
+    font-size: 24px;
+  }
+  
+  .social-buttons {
+    flex-direction: column;
+  }
+}

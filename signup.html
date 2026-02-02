@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #090938 0%, #501750 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signup-card {
+            background: linear-gradient(
+                135deg,
+                rgba(9, 9, 56, 0.8),
+                rgba(80, 23, 80, 0.8)
+            );
+            border: 1px solid rgba(106, 92, 255, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            padding: 40px;
+            animation: slideIn 0.4s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .signup-card:hover {
+            border-color: #ff3cac;
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px rgba(106, 92, 255, 0.4);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .signup-card h2 {
+            color: #ff3cac;
+            margin-bottom: 10px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .signup-card p {
+            color: #34daa2;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #0fda89;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid rgba(106, 92, 255, 0.3);
+            background: rgba(9, 9, 56, 0.5);
+            color: #fff;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-group input:focus {
+            border-color: #ff3cac;
+            box-shadow: 0 0 20px rgba(106, 92, 255, 0.4);
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #6a5cff 0%, #ff3cac 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(106, 92, 255, 0.6);
+        }
+
+        .signup-btn:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #34daa2;
+            font-size: 14px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(106, 92, 255, 0.3);
+        }
+
+        .divider::before {
+            margin-right: 10px;
+        }
+
+        .divider::after {
+            margin-left: 10px;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid rgba(106, 92, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(9, 9, 56, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            color: #0fda89;
+        }
+
+        .social-btn:hover {
+            border-color: #ff3cac;
+            color: #fff;
+            text-shadow: 0 0 10px #6a5cff;
+            box-shadow: 0 0 20px rgba(106, 92, 255, 0.4);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #34daa2;
+        }
+
+        .login-link a {
+            color: #0fda89;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .login-link a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #6a5cff;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-card">
+        <h2>Create Account</h2>
+        <p>Sign up to get started</p>
+        
+        <div class="social-buttons">
+            <button class="social-btn">Google</button>
+            <button class="social-btn">GitHub</button>
+        </div>
+        
+        <div class="divider">or</div>
+        
+        <form>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="John Doe">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="you@example.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••">
+            </div>
+            
+            <button type="submit" class="signup-btn">Sign Up</button>
+        </form>
+        
+        <div class="login-link">
+            Already have an account? <a href="#">Log in</a>
+        </div>
+    </div>
+</body>
+</html>
